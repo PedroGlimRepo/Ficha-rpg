@@ -1,0 +1,858 @@
+<html lang="pt-BR"><head>
+<meta charset="UTF-8">
+<title>Ficha de Personagem – Cinzas do Progresso (1762)</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&amp;family=Cinzel:wght@400;700;900&amp;family=Special+Elite&amp;display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:       #1c1308;
+    --paper:     #f0e8d5;
+    --paper2:    #e8ddc4;
+    --amber:     #b8762a;
+    --amber-dk:  #7a4e18;
+    --amber-lt:  #d4a255;
+    --rust:      #8b3a1a;
+    --soot:      #2e2016;
+    --line:      rgba(122,78,24,0.35);
+  }
+
+  body {
+    font-family: 'Special Elite', 'Courier New', monospace;
+    background: #2a1f0e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1cm;
+    color: var(--ink);
+    gap: 1cm;
+  }
+
+  /* ── PAPER SHEET ── */
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--paper);
+    padding: 14mm 12mm 10mm;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(122,78,24,0.06) 24px, rgba(122,78,24,0.06) 25px),
+      repeating-linear-gradient(90deg, transparent, transparent 24px, rgba(122,78,24,0.04) 24px, rgba(122,78,24,0.04) 25px);
+    box-shadow: 0 0 0 1px var(--amber-dk),
+                0 0 0 3px var(--paper2),
+                0 0 0 4px var(--amber-dk),
+                8px 8px 40px rgba(0,0,0,0.6),
+                inset 0 0 80px rgba(122,78,24,0.12);
+    page-break-after: always;
+  }
+
+  .sheet:last-child { page-break-after: auto; }
+
+  /* corner ornaments */
+  .sheet::before, .sheet::after {
+    content: '';
+    position: absolute;
+    width: 22px; height: 22px;
+    border-color: var(--amber-dk);
+    border-style: solid;
+    pointer-events: none;
+  }
+  .sheet::before { top: 8mm; left: 8mm; border-width: 2px 0 0 2px; }
+  .sheet::after  { bottom: 8mm; right: 8mm; border-width: 0 2px 2px 0; }
+  .corner-tr, .corner-bl {
+    position: absolute;
+    width: 22px; height: 22px;
+    border-color: var(--amber-dk);
+    border-style: solid;
+    pointer-events: none;
+  }
+  .corner-tr { top: 8mm; right: 8mm; border-width: 2px 2px 0 0; }
+  .corner-bl { bottom: 8mm; left: 8mm; border-width: 0 0 2px 2px; }
+
+  /* ── HEADER ── */
+  .header {
+    text-align: center;
+    margin-bottom: 6px;
+    padding-bottom: 8px;
+    position: relative;
+  }
+
+  .header-rule {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .header-rule::before, .header-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--amber-dk);
+  }
+
+  .ornament { color: var(--amber); font-size: 14pt; }
+
+  .title {
+    font-family: 'Cinzel', serif;
+    font-size: 24pt;
+    font-weight: 900;
+    color: var(--amber-dk);
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  .subtitle {
+    font-family: 'IM Fell English', serif;
+    font-size: 8pt;
+    color: var(--amber);
+    letter-spacing: 4px;
+    margin-top: 3px;
+    font-style: italic;
+  }
+
+  .double-rule {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 8px;
+  }
+  .double-rule span {
+    display: block;
+    height: 1px;
+    background: var(--amber-dk);
+  }
+  .double-rule span:nth-child(2) { opacity: 0.4; }
+
+  /* ── MAIN BODY ── */
+  .body {
+    display: grid;
+    grid-template-columns: 52mm 1fr 52mm;
+    gap: 0;
+    flex: 1;
+  }
+
+  /* ── SECTION TITLE ── */
+  .sec-title {
+    font-family: 'Cinzel', serif;
+    font-size: 6.5pt;
+    font-weight: 700;
+    color: var(--amber-dk);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 7px;
+  }
+  .sec-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--amber-dk);
+    opacity: 0.5;
+  }
+
+  /* ── COLUMNS ── */
+  .col-left, .col-right {
+    padding: 8px 8px;
+    border-right: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .col-right {
+    border-right: none;
+    border-left: 1px solid var(--line);
+  }
+  .col-center {
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* ── FIELD ── */
+  label {
+    font-family: 'Cinzel', serif;
+    font-size: 5.5pt;
+    font-weight: 700;
+    color: var(--amber-dk);
+    display: block;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--amber-dk);
+    color: var(--ink);
+    padding: 2px 2px;
+    font-size: 8pt;
+    font-family: 'Special Elite', monospace;
+    width: 100%;
+    outline: none;
+    border-radius: 0;
+    transition: border-color 0.2s;
+  }
+  input:focus, textarea:focus {
+    border-bottom-color: var(--rust);
+    background: rgba(122,78,24,0.05);
+  }
+
+  /* ── IDENTITY ROW ── */
+  .identity {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 8px;
+    padding: 6px 8px 8px;
+    border-top: 2px solid var(--amber-dk);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 0;
+    background: rgba(122,78,24,0.04);
+  }
+
+  /* ── ATTRIBUTES ── */
+  .attr-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .attr-item {
+    text-align: center;
+    position: relative;
+  }
+  .attr-item label {
+    font-size: 5.5pt;
+    text-align: center;
+    margin-bottom: 3px;
+  }
+  .attr-box {
+    position: relative;
+    margin: 0 auto;
+    width: 42px;
+    height: 42px;
+  }
+  .attr-box input {
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-bottom: none;
+    text-align: center;
+    font-size: 18pt;
+    font-weight: bold;
+    font-family: 'Cinzel', serif;
+    color: var(--amber-dk);
+    background: transparent;
+    padding: 0;
+    line-height: 42px;
+  }
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+  input[type=number] { -moz-appearance: textfield; text-align: center; }
+  .attr-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1.5px solid var(--amber-dk);
+    transform: rotate(45deg) scale(0.82);
+    pointer-events: none;
+  }
+  .attr-box::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1px solid rgba(122,78,24,0.3);
+    transform: rotate(45deg) scale(0.82);
+    pointer-events: none;
+  }
+  .mod-badge {
+    font-family: 'Cinzel', serif;
+    font-size: 7pt;
+    font-weight: 700;
+    color: var(--amber);
+    text-align: center;
+    margin-top: 3px;
+  }
+  .attr-item-wide { grid-column: 1 / 3; display: flex; flex-direction: column; align-items: center; }
+
+  /* ── PROGRESS BOXES ── */
+  .prog-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .prog-item {
+    text-align: center;
+  }
+  .prog-item label { font-size: 5.5pt; }
+  .prog-item input {
+    font-size: 12pt;
+    font-weight: bold;
+    font-family: 'Cinzel', serif;
+    text-align: center;
+    color: var(--amber-dk);
+    border-bottom: 1px solid var(--amber-dk);
+    padding: 2px 0;
+  }
+
+  /* ── SKILLS ── */
+  .skill-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .skill-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 1px 0;
+    border-bottom: 1px dotted rgba(122,78,24,0.2);
+  }
+  .skill-row input[type="checkbox"] {
+    width: 11px;
+    height: 11px;
+    accent-color: var(--amber-dk);
+    flex-shrink: 0;
+  }
+  .skill-row .skill-name {
+    flex: 1;
+    font-size: 7pt;
+    font-family: 'Special Elite', monospace;
+    color: var(--ink);
+  }
+  .skill-row .skill-attr {
+    font-size: 5.5pt;
+    font-family: 'Cinzel', serif;
+    color: var(--amber);
+    min-width: 22px;
+  }
+  .skill-row input[type="text"] {
+    width: 28px;
+    text-align: center;
+    font-size: 7pt;
+    border-bottom: 1px solid var(--amber-dk);
+    padding: 0 2px;
+  }
+
+  /* ── POWERS ── */
+  .power-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .power-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 0;
+    border-bottom: 1px dotted rgba(122,78,24,0.2);
+  }
+  .power-pct {
+    font-family: 'Cinzel', serif;
+    font-size: 6pt;
+    font-weight: 700;
+    color: var(--amber);
+    min-width: 26px;
+    text-align: right;
+  }
+  .power-dot {
+    width: 5px;
+    height: 5px;
+    border: 1px solid var(--amber-dk);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .power-row input[type="text"] {
+    flex: 1;
+    font-size: 7pt;
+    font-family: 'Special Elite', monospace;
+    border-bottom: 1px solid rgba(122,78,24,0.3);
+  }
+
+  /* ── EQUIPMENT ── */
+  textarea {
+    width: 100%;
+    resize: none;
+    font-size: 7.5pt;
+    line-height: 1.5;
+    font-family: 'Special Elite', monospace;
+    background: transparent;
+    border: 1px dashed rgba(122,78,24,0.4);
+    padding: 5px;
+    color: var(--ink);
+    border-radius: 0;
+  }
+  textarea:focus {
+    border-color: var(--amber-dk);
+    background: rgba(122,78,24,0.04);
+  }
+
+  /* ── NOTES STRIP ── */
+  .notes-strip {
+    border-top: 2px solid var(--amber-dk);
+    padding: 6px 8px;
+    background: rgba(122,78,24,0.04);
+  }
+  .notes-strip textarea {
+    height: 52px;
+    border: none;
+    border-bottom: 1px solid rgba(122,78,24,0.3);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    font-family: 'IM Fell English', serif;
+    font-size: 6.5pt;
+    font-style: italic;
+    color: var(--amber);
+    letter-spacing: 3px;
+    padding-top: 5px;
+    border-top: 1px solid var(--line);
+    margin-top: 4px;
+  }
+
+  /* ── APT PROGRESS BAR ── */
+  .apt-bar {
+    margin-top: 4px;
+    height: 6px;
+    background: rgba(122,78,24,0.15);
+    border: 1px solid var(--amber-dk);
+    position: relative;
+  }
+  .apt-fill {
+    height: 100%;
+    width: 20%;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--amber-dk) 0, var(--amber-dk) 4px,
+      transparent 4px, transparent 8px
+    );
+  }
+
+  /* ── PAGE 2 SPECIFICS ── */
+  .page2-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    flex: 1;
+  }
+  .sigil-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 6.5pt;
+  }
+  .sigil-table th {
+    font-family: 'Cinzel', serif;
+    font-size: 5.5pt;
+    font-weight: 700;
+    color: var(--amber-dk);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-top: 1px solid var(--amber-dk);
+    border-bottom: 1px solid var(--amber-dk);
+    padding: 3px 3px;
+    text-align: left;
+    background: rgba(122,78,24,0.07);
+  }
+  .sigil-table td {
+    border-bottom: 1px dotted rgba(122,78,24,0.25);
+    padding: 2px 3px;
+    vertical-align: middle;
+  }
+  .sigil-table input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-size: 6.5pt;
+    font-family: 'Special Elite', monospace;
+    padding: 2px 0;
+    color: var(--ink);
+  }
+  .page2-notes textarea {
+    height: 100%;
+    min-height: 220px;
+    border: 1px dashed rgba(122,78,24,0.4);
+    font-size: 7.5pt;
+  }
+
+  /* ── TOOLBAR ── */
+  .toolbar {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 100;
+  }
+  .btn {
+    font-family: 'Cinzel', serif;
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border: 1.5px solid var(--amber-dk);
+    background: var(--paper);
+    color: var(--amber-dk);
+    cursor: pointer;
+    border-radius: 2px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .btn:hover { background: var(--amber-dk); color: var(--paper); }
+  .btn:active { transform: translateY(1px); }
+  .btn-gh { background: #24292e; color: #f0e8d5; border-color: #555; }
+  .btn-gh:hover { background: #444d56; }
+
+  #gh-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+  }
+  #gh-modal.open { display: flex; }
+  .modal-box {
+    background: var(--paper);
+    border: 2px solid var(--amber-dk);
+    padding: 24px 28px;
+    min-width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  }
+  .modal-box h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 11pt;
+    color: var(--amber-dk);
+  }
+  .modal-box p {
+    font-family: 'Special Elite', monospace;
+    font-size: 7.5pt;
+    color: var(--amber);
+    line-height: 1.5;
+  }
+  .modal-box label { font-size: 6.5pt; margin-bottom: 2px; }
+  .modal-field { display: flex; flex-direction: column; gap: 2px; }
+  .modal-box input[type="text"],
+  .modal-box input[type="password"] {
+    border: 1px solid var(--amber-dk);
+    border-bottom: 1px solid var(--amber-dk);
+    padding: 5px 7px;
+    font-size: 8pt;
+    width: 100%;
+    background: rgba(240,232,213,0.9);
+    font-family: 'Special Elite', monospace;
+  }
+  .modal-row { display: flex; gap: 8px; justify-content: flex-end; margin-top: 4px; }
+  #gh-status { font-family: 'Special Elite', monospace; font-size: 7.5pt; color: var(--rust); min-height: 14px; }
+
+  @media print {
+    body { background: none; padding: 0; }
+    .toolbar, #gh-modal { display: none !important; }
+    .sheet { box-shadow: none; margin: 0 auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PÁGINA 1 -->
+<div class="sheet">
+  <div class="corner-tr"></div>
+  <div class="corner-bl"></div>
+
+  <div class="header">
+    <div class="header-rule">
+      <span class="ornament">✦</span>
+      <div class="title">Cinzas do Progresso</div>
+      <span class="ornament">✦</span>
+    </div>
+    <div class="subtitle">Ficha de Personagem — Ano de 1762</div>
+    <div class="double-rule"><span></span><span></span></div>
+  </div>
+
+  <div class="identity">
+    <div><label>Nome do Personagem</label><input type="text"></div>
+    <div><label>Jogador</label><input type="text"></div>
+    <div><label>Origem</label><input type="text"></div>
+    <div><label>Classe</label><input type="text"></div>
+    <div><label>Árvore</label><input type="text"></div>
+  </div>
+
+  <div class="body">
+    <!-- COLUNA ESQUERDA -->
+    <div class="col-left">
+      <div>
+        <div class="sec-title">Atributos</div>
+        <div class="attr-grid">
+          <div class="attr-item"><label>Força</label><div class="attr-box"><input type="number" min="0" max="5" value="2"></div><div class="mod-badge" id="mod-for">+1</div></div>
+          <div class="attr-item"><label>Agilidade</label><div class="attr-box"><input type="number" min="0" max="5" value="2"></div><div class="mod-badge" id="mod-agi">+1</div></div>
+          <div class="attr-item"><label>Vigor</label><div class="attr-box"><input type="number" min="0" max="5" value="2"></div><div class="mod-badge" id="mod-vig">+1</div></div>
+          <div class="attr-item"><label>Presença</label><div class="attr-box"><input type="number" min="0" max="5" value="2"></div><div class="mod-badge" id="mod-pre">+21</div></div>
+          <div class="attr-item attr-item-wide"><label>Intelecto</label><div class="attr-box"><input type="number" min="0" max="5" value="2"></div><div class="mod-badge" id="mod-int">+21</div></div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div>
+        <div class="sec-title">Progressão</div>
+        <div class="prog-grid">
+          <div class="prog-item"><label>PE</label><input type="text"></div>
+          <div class="prog-item"><label>Sanidade</label><input type="text"></div>
+          <div class="prog-item"><label>Proficiência</label><input type="text"></div>
+          <div class="prog-item"><label>APT</label><input type="text"></div>
+        </div>
+        <div class="apt-bar"><div class="apt-fill"></div></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div style="flex:1; display:flex; flex-direction:column; gap:4px;">
+        <div class="sec-title">Equipamentos</div>
+        <textarea style="flex:1; min-height: 120px;"></textarea>
+      </div>
+    </div>
+
+    <!-- COLUNA CENTRAL -->
+    <div class="col-center">
+      <div>
+        <div class="sec-title">Perícias</div>
+        <div class="skill-list">
+          <div class="skill-row"><input type="checkbox"><span class="skill-name">Acrobacia</span><span class="skill-attr">AGI</span><input type="text"></div>
+          <div class="skill-row"><input type="checkbox"><span class="skill-name">Atletismo</span><span class="skill-attr">FOR</span><input type="text"></div>
+          <div class="skill-row"><input type="checkbox"><span class="skill-name">Atualidades</span><span class="skill-attr">INT</span><input type="text"></div>
+          <div class="skill-row"><input type="checkbox"><span class="skill-name">Caligrafia Mágica</span><span class="skill-attr">INT</span><input type="text"></div>
+          <div class="skill-row"><input type="checkbox"><span class="skill-name">Diplomacia</span><span class="skill-attr">PRE</span><input type="text"></div>
+          <div class="skill-row"><input type="checkbox"><span class="skill-name">Enganação</span><span class="skill-attr">PRE</span><input type="text"></div>
+          <div class="skill-row"><input type="checkbox"><span class="skill-name">Fortitude</span><span class="skill-attr">VIG</span><input type="text"></div>
+          <div class="skill-row"><input type="checkbox"><span class="skill-name">Furtividade</span><span class="skill-attr">AGI</span><input type="text"></div>
+          <div class="skill-row"><input type="checkbox"><span class="skill-name">Investigação</span><span class="skill-attr">INT</span><input type="text"></div>
+          <div class="skill-row"><input type="checkbox"><span class="skill-name">Luta</span><span class="skill-attr">FOR</span><input type="text"></div>
+          <div class="skill-row"><input type="checkbox"><span class="skill-name">Ocultismo</span><span class="skill-attr">INT</span><input type="text"></div>
+          <div class="skill-row"><input type="checkbox"><span class="skill-name">Percepção</span><span class="skill-attr">PRE</span><input type="text"></div>
+          <div class="skill-row"><input type="checkbox"><span class="skill-name">Pontaria</span><span class="skill-attr">AGI</span><input type="text"></div>
+          <div class="skill-row"><input type="checkbox"><span class="skill-name">Profissão</span><span class="skill-attr">INT</span><input type="text"></div>
+          <div class="skill-row"><input type="checkbox"><span class="skill-name">Reflexos</span><span class="skill-attr">AGI</span><input type="text"></div>
+          <div class="skill-row"><input type="checkbox"><span class="skill-name">Sobrevivência</span><span class="skill-attr">INT</span><input type="text"></div>
+          <div class="skill-row"><input type="checkbox"><span class="skill-name">Vontade</span><span class="skill-attr">PRE</span><input type="text"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUNA DIREITA -->
+    <div class="col-right">
+      <div>
+        <div class="sec-title">Poderes &amp; Habilidades</div>
+        <ul class="power-list">
+          <li class="power-row"><span class="power-pct">10%</span><span class="power-dot"></span><input type="text"></li>
+          <li class="power-row"><span class="power-pct">20%</span><span class="power-dot"></span><input type="text"></li>
+          <li class="power-row"><span class="power-pct">30%</span><span class="power-dot"></span><input type="text"></li>
+          <li class="power-row"><span class="power-pct">40%</span><span class="power-dot"></span><input type="text"></li>
+          <li class="power-row"><span class="power-pct">50%</span><span class="power-dot"></span><input type="text"></li>
+          <li class="power-row"><span class="power-pct">60%</span><span class="power-dot"></span><input type="text"></li>
+          <li class="power-row"><span class="power-pct">70%</span><span class="power-dot"></span><input type="text"></li>
+          <li class="power-row"><span class="power-pct">80%</span><span class="power-dot"></span><input type="text"></li>
+          <li class="power-row"><span class="power-pct">90%</span><span class="power-dot"></span><input type="text"></li>
+          <li class="power-row"><span class="power-pct">99%</span><span class="power-dot"></span><input type="text"></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="notes-strip">
+    <div class="sec-title" style="margin-bottom:4px;">Anotações Breves</div>
+    <textarea style="height:40px;"></textarea>
+  </div>
+
+  <div class="footer">
+    ✦ &nbsp; Cinzas do Progresso — O que a tinta revela, o fogo esquece &nbsp; ✦
+  </div>
+</div>
+
+<!-- PÁGINA 2 -->
+<div class="sheet">
+  <div class="corner-tr"></div>
+  <div class="corner-bl"></div>
+
+  <div class="header">
+    <div class="header-rule">
+      <span class="ornament">✦</span>
+      <div class="title">Sigilos &amp; Anotações</div>
+      <span class="ornament">✦</span>
+    </div>
+    <div class="subtitle">Registro de Conhecimentos Arcanos e História</div>
+    <div class="double-rule"><span></span><span></span></div>
+  </div>
+
+  <div class="page2-grid">
+    <!-- SIGILOS -->
+    <div>
+      <div class="sec-title">Sigilos Conhecidos</div>
+      <table class="sigil-table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Grau</th>
+            <th>Elem.</th>
+            <th>PE</th>
+            <th>DT</th>
+            <th>Superfície</th>
+            <th>Efeito</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ANOTAÇÕES -->
+    <div class="page2-notes">
+      <div class="sec-title">História, Vínculos e Motivações</div>
+      <textarea style="height:100%; min-height:260px;"></textarea>
+    </div>
+  </div>
+
+  <div class="footer">
+    ✦ &nbsp; Cinzas do Progresso — O que a tinta revela, o fogo esquece &nbsp; ✦
+  </div>
+</div>
+
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <button class="btn" onclick="window.print()">🖨 Imprimir</button>
+  <button class="btn btn-gh" onclick="document.getElementById('gh-modal').classList.add('open')">↑ Enviar ao GitHub</button>
+</div>
+
+<!-- GITHUB MODAL -->
+<div id="gh-modal" class="open">
+  <div class="modal-box">
+    <h2>✦ Enviar ao GitHub</h2>
+    <p>Insira seu token de acesso pessoal (com permissão <em>repo</em>), o repositório e o caminho do arquivo.</p>
+    <div class="modal-field">
+      <label>Token de Acesso Pessoal</label>
+      <input type="password" id="gh-token" placeholder="ghp_...">
+    </div>
+    <div class="modal-field">
+      <label>Repositório (usuario/repo)</label>
+      <input type="text" id="gh-repo" placeholder="meu-usuario/cinzas-do-progresso">
+    </div>
+    <div class="modal-field">
+      <label>Caminho do arquivo no repo</label>
+      <input type="text" id="gh-path" value="ficha-personagem.html">
+    </div>
+    <div class="modal-field">
+      <label>Mensagem do commit</label>
+      <input type="text" id="gh-msg" value="Atualiza ficha de personagem">
+    </div>
+    <div id="gh-status" style="color: rgb(42, 110, 26);">Obtendo SHA do arquivo existente...</div>
+    <div class="modal-row">
+      <button class="btn" onclick="document.getElementById('gh-modal').classList.remove('open')">Cancelar</button>
+      <button class="btn btn-gh" onclick="uploadToGitHub()">Enviar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Modifier auto-calc (Ordem Paranormal: modificador = valor do atributo) ──
+const attrInputs = document.querySelectorAll('.attr-box input[type="number"]');
+const modIds = ['mod-for','mod-agi','mod-vig','mod-pre','mod-int'];
+attrInputs.forEach((inp, i) => {
+  inp.addEventListener('input', () => {
+    const v = parseInt(inp.value);
+    const el = document.getElementById(modIds[i]);
+    if (!el) return;
+    if (isNaN(v) || v < 0) { el.textContent = '+0'; return; }
+    const mod = v;
+    el.textContent = (mod >= 0 ? '+' : '') + mod;
+  });
+});
+
+async function uploadToGitHub() {
+  const token  = document.getElementById('gh-token').value.trim();
+  const repo   = document.getElementById('gh-repo').value.trim();
+  const path   = document.getElementById('gh-path').value.trim();
+  const msg    = document.getElementById('gh-msg').value.trim();
+  const status = document.getElementById('gh-status');
+
+  if (!token || !repo || !path) {
+    status.textContent = '⚠ Preencha todos os campos obrigatórios.';
+    return;
+  }
+
+  status.textContent = 'Obtendo SHA do arquivo existente...';
+
+  const apiBase = `https://api.github.com/repos/${repo}/contents/${path}`;
+  const headers = {
+    'Authorization': `Bearer ${token}`,
+    'Accept': 'application/vnd.github+json',
+    'Content-Type': 'application/json'
+  };
+
+  let sha = null;
+  try {
+    const check = await fetch(apiBase, { headers });
+    if (check.ok) {
+      const data = await check.json();
+      sha = data.sha;
+    }
+  } catch(e) {}
+
+  const html    = document.documentElement.outerHTML;
+  const content = btoa(unescape(encodeURIComponent(html)));
+
+  const body = { message: msg, content };
+  if (sha) body.sha = sha;
+
+  status.textContent = 'Enviando para o GitHub...';
+
+  try {
+    const res = await fetch(apiBase, {
+      method: 'PUT',
+      headers,
+      body: JSON.stringify(body)
+    });
+    const result = await res.json();
+    if (res.ok) {
+      status.style.color = '#2a6e1a';
+      status.textContent = '✔ Enviado com sucesso! ' + (result.content?.html_url || '');
+    } else {
+      status.style.color = '#8b3a1a';
+      status.textContent = '✖ Erro: ' + (result.message || res.status);
+    }
+  } catch(e) {
+    status.style.color = '#8b3a1a';
+    status.textContent = '✖ Erro de rede: ' + e.message;
+  }
+}
+</script>
+
+
+</body></html>
